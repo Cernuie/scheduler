@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "components/Button"
 import InterviewerList from "components/InterviewerList"
+import "components/Appointment/styles.scss"
 
 export default function Form(props) {
   const [name, setName] = useState(props.name || "");

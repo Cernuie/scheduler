@@ -1,4 +1,5 @@
 import React from "react";
+import "components/Appointment/styles.scss"
 
 export default function Status(props) {
   return (

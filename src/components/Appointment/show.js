@@ -1,4 +1,5 @@
 import React from "react";
+import "components/Appointment/styles.scss"
 
 export default function Show(props) {
   const onDelete = function() {
@@ -7,7 +8,7 @@ export default function Show(props) {
   const onEdit = function() {
     props.onEdit();
   }
-  
+
   return(
     <main className="appointment__card appointment__card--show">
   <section className="appointment__card-left">
