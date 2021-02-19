@@ -3,7 +3,7 @@ import axios from "axios";
 import DayList from "components/DayList"
 import "components/Application.scss";
 import Appointment from "components/Appointment/index"
-import {getAppointmentsForDay} from "helpers/selectors"
+import {getAppointmentsForDay, getInterview} from "helpers/selectors"
 
 export default function Application(props) {
   const [state, setState] = useState({
@@ -14,15 +14,23 @@ export default function Application(props) {
   });
 
   //Add the line below:
-  const dailyAppointments = getAppointmentsForDay(state, state.day);
     
   const setDay = day => setState(prev => ({ ...prev, day }));
+  const appointments = getAppointmentsForDay(state, state.day);
 
-
-  const appointmentList = dailyAppointments.map(appointment => {
-    return (<Appointment key={appointment.id} {...appointment} />)
-  })
-
+  const schedule = appointments.map((appointment) => {
+    const interview = getInterview(state, appointment.interview);
+  
+    return (
+      <Appointment
+        key={appointment.id}
+        id={appointment.id}
+        time={appointment.time}
+        interview={interview}
+      />
+    );
+  });
+  
   useEffect(() => {
     const daysUrl = `http://localhost:8001/api/days`
     const appointmentsUrl = `http://localhost:8001/api/appointments`
@@ -62,7 +70,7 @@ export default function Application(props) {
 
       </section>
       <section className="schedule">
-        {appointmentList}
+        {schedule}
         {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
       </section>
     </main>
