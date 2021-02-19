@@ -5,7 +5,8 @@ const state = {
     {
       id: 1,
       name: "Monday",
-      appointments: [1, 2, 3]
+      appointments: [1, 2, 3],
+      interviewers:
     },
     {
       id: 2,
@@ -89,3 +90,24 @@ test("getInterview returns null if no interview is booked", () => {
   const result = getInterview(state, state.appointments["2"].interview);
   expect(result).toBeNull();
 });
+
+test("getAppointmentsForDay returns an array", () => {
+
+})
+
+test("getAppointmentsForDay returns an array with a length matching the number of appointments for that day", () => {
+
+})
+
+test("getAppointmentsForDay returns an array containing the correct appointment objects", () => {
+
+})
+
+test("getAppointmentsForDay returns an empty array when the days data is empty", () => {
+
+})
+
+test("getAppointmentsForDay returns an empty array when the day is not found", () => {
+
+})
+
