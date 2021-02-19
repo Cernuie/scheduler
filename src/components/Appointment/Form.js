@@ -34,7 +34,7 @@ export default function Form(props) {
   </section>
   <section className="appointment__card-right">
     <section className="appointment__actions">
-      <Button danger>Cancel</Button>
+      <Button danger onClick={cancel}>Cancel</Button>
       <Button confirm>Save</Button>
     </section>
   </section>
