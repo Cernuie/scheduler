@@ -14,7 +14,25 @@ export default function Application(props) {
   });
 
   //Add the line below:
-    
+  function bookInterview(id, interview) {
+
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+    const url = `http://localhost:8001/api/appointments/${id}`;
+    return axios.put(url, appointments[id])
+    .then(response => {
+      setState({ ...state, appointments });
+    });
+  };
+  
+  
+  
   const setDay = day => setState(prev => ({ ...prev, day }));
   const appointments = getAppointmentsForDay(state, state.day);
 
