@@ -31,8 +31,22 @@ export default function Application(props) {
     });
   };
   
-  function deleteInterview() {
+  function deleteInterview (id) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...null }
+    };
 
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+    
+    const url = `http://localhost:8001/api/appointments/${id}`
+      return axios.delete(url, appointments[id])
+      .then(response => {
+        setState({ ...state, appointments });
+      })
   }
   
   const interviewers = getInterviewersForDay(state, state.day);
