@@ -2,6 +2,10 @@ import React from "react";
 import "components/Appointment/styles.scss"
 
 export default function Error(props) {
+  const back = () => {
+    props.onBack();
+  }
+
   return (
     <main className="appointment__card appointment__card--error">
   <section className="appointment__error-message">
@@ -12,6 +16,7 @@ export default function Error(props) {
     className="appointment__error-close"
     src="images/close.png"
     alt="Close"
+    onClick={back}
   />
 </main>
 
