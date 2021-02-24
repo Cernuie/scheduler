@@ -84,10 +84,24 @@ describe("Application", () => {
     const { container } = render(<Application />);
 
     //2. Wait until "Archie Cohen" is displayed
+    await waitForElement(() => getByText(container, "Archie Cohen"));
     //3. Click the "Edit" Button
-    //4. Confirm that the edit placeholder shows
+    const appointment = getAllByTestId(container, "appointment").find(
+      appointment => queryByText(appointment, "Archie Cohen")
+    );
+    fireEvent.click(getByAltText(appointment, "Edit"));
+    //4. Change the name and interviewer
+    fireEvent.change(getByPlaceholderText(appointment, /enter student name/i), {
+      target: { value: "Placeholder Name"}
+    });
+    fireEvent.click(getByAltText(appointment, "Sylvia Palmer"));
     //5. Click save
-    //6. Check that editing happens
+    fireEvent.click(getByText(appointment, "Save"))
+    //6. Check that the saving happens
+    expect(getByText(appointment, "Saving")).toBeInTheDocument();
+
     //7.  Wait for appointment with new name shows
+    await waitForElement(() => getByText(appointment, "Placeholder Name"));
+
   })
 })
