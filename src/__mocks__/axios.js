@@ -54,33 +54,33 @@ const fixtures = {
 };
 
 export default {
+  defaults: { baseURL: "" },
   get: jest.fn(url => {
-    if (url === "/api/days") {
+    console.log("In Axios", url)
+    if (url === "http://localhost:8001/api/days") {
       return Promise.resolve({
         status: 200,
         statusText: "OK",
         data: fixtures.days
       });
     }
-    const appointmentsUrl = `http://localhost:8001/api/appointments`
-    const interviewersUrl = `http://localhost:8001/api/interviewers`
 
-    if (url === "/api/appointments") {
+    if (url === "http://localhost:8001/api/appointments") {
       /* Resolve appointments data */
       return Promise.resolve({
-        status:200,
+        status: 200,
         statusText: "OK",
         data: fixtures.appointments
-      })
+      });
     }
 
-    if (url === "/api/interviewers") {
+    if (url === "http://localhost:8001/api/interviewers") {
       /* Resolve interviewers data */
       return Promise.resolve({
-        status:200,
+        status: 200,
         statusText: "OK",
         data: fixtures.interviewers
-      })
+      });
     }
   })
-}
+};
