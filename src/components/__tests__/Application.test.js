@@ -3,6 +3,7 @@ import React from "react";
 import { render, cleanup, waitForElement, fireEvent, queryByAltText, getByText, prettyDOM, getAllByTestId, getByAltText, getByPlaceholderText, queryByText } from "@testing-library/react";
 
 import Application from "components/Application";
+import axios from "axios";
 
 afterEach(cleanup);
 
@@ -104,4 +105,13 @@ describe("Application", () => {
     await waitForElement(() => getByText(appointment, "Placeholder Name"));
 
   })
+
+  it("shows the save error when failing to save an appointment", async () => {
+    axios.put.mockRejectedValueOnce();
+  });
+
+  it("shows the delete error when failing to delete an existing appointment", async () => {
+    axios.delete.mockRejectedValueOnce();
+  })
+  
 })
