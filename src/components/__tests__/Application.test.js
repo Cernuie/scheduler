@@ -60,7 +60,7 @@ describe("Application", () => {
   
     // 4. Check that the confirmation message is shown.
     expect(
-      getByText(appointment, "Delete the appointment?")
+      getByText(appointment, "Are you sure?")
     ).toBeInTheDocument();
   
     // 5. Click the "Confirm" button on the confirmation.
@@ -92,6 +92,7 @@ describe("Application", () => {
     );
     fireEvent.click(getByAltText(appointment, "Edit"));
     //4. Change the name and interviewer
+    console.log(prettyDOM(appointment))
     fireEvent.change(getByPlaceholderText(appointment, /enter student name/i), {
       target: { value: "Placeholder Name"}
     });
