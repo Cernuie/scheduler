@@ -134,7 +134,6 @@ describe("Application", () => {
     //Checks that we get save error
     await waitForElement(() => getByText(appointment, "Error saving!"));
 
-
   });
 
   it("shows the delete error when failing to delete an existing appointment", async () => {

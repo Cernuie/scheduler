@@ -4,10 +4,10 @@ import "components/Appointment/styles.scss"
 export default function Show(props) {
   const onDelete = function() {
     props.onDelete();
-  }
+  };
   const onEdit = function() {
     props.onEdit();
-  }
+  };
 
   return(
     <main className="appointment__card appointment__card--show">
@@ -37,4 +37,4 @@ export default function Show(props) {
 </main>
 
   )
-}
+};
